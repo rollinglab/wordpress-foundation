@@ -1,34 +1,36 @@
-<?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package _s
- */
+<?php get_header(); ?>
 
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-
+	<article id="main" <?php post_class( 'row' ); ?>>
+     	<div class="columns large-12">
+     	
+		<?php if ( have_posts() ) : ?>
+		
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+     		     <header class="page-header">
+        		          <h1 class="page-title"><?php the_title(); ?></h1>
+        		     </header><!-- .entry-header -->
+        		     
+        		     <div class="page-meta">        		     
+        		          <?php breadcrumb_trail( array( 'separator' => '>', 'before' => '' ) ); ?>
+        		     </div>
+        		     
+        		     <div class="row content-area">
+        		          <div id="primary" class="large-12 columns">
+        		          	<div id="content">
+                       		     <div class="entry-content">
+                       		          <?php the_content(); ?>
+                       		          <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', '_s' ), 'after' => '</div>' ) ); ?>
+                       		     </div><!-- .entry-content -->             		     
+        		          	</div><!--#content-->
+             		     </div>
+        		     </div>
+        		     
+			<?php endwhile; ?>
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || '0' != get_comments_number() )
-						comments_template();
-				?>
-
-			<?php endwhile; // end of the loop. ?>
+		<?php endif; ?>
 
 		</div><!-- #content -->
-	</div><!-- #primary -->
+	</article><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

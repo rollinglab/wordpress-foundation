@@ -1,9 +1,6 @@
 <?php
-/**
- * _s functions and definitions
- *
- * @package _s
- */
+
+require_once( get_template_directory() . '/inc/breadcrumbs.php' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -50,9 +47,9 @@ function _s_setup() {
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
 	 * If you're building a theme based on _s, use a find and replace
-	 * to change '_s' to the name of your theme in all the template files
+	 * to change 'lab' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'lab', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -68,7 +65,7 @@ function _s_setup() {
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', '_s' ),
+		'primary' => __( 'Primary Menu', 'lab' ),
 	) );
 
 	/**
@@ -113,34 +110,68 @@ add_action( 'after_setup_theme', '_s_register_custom_background' );
 /**
  * Register widgetized area and update sidebar with default widgets
  */
-function _s_widgets_init() {
+function lab_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', '_s' ),
+		'name'          => __( 'Sidebar', 'lab' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Left', 'lab' ),
+		'id'            => 'footer-1',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Middle Left', 'lab' ),
+		'id'            => 'footer-2',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );	
+	register_sidebar( array(
+		'name'          => __( 'Footer Middle Right', 'lab' ),
+		'id'            => 'footer-3',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );	
+	register_sidebar( array(
+		'name'          => __( 'Footer Right', 'lab' ),
+		'id'            => 'footer-4',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );	
 }
-add_action( 'widgets_init', '_s_widgets_init' );
+add_action( 'widgets_init', 'lab_widgets_init' );
 
 /**
  * Enqueue scripts and styles
  */
 function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'lab-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'lab-normalize', get_template_directory_uri() . '/stylesheets/normalize.css' );
+	wp_enqueue_style( 'lab-app', get_template_directory_uri() . '/stylesheets/app.css' );
 
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'lab-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'lab-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
 	if ( is_singular() && wp_attachment_is_image() ) {
-		wp_enqueue_script( '_s-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
+		wp_enqueue_script( 'lab-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );

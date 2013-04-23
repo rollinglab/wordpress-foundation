@@ -1,31 +1,44 @@
-<?php
-/**
- * The Template for displaying all single posts.
- *
- * @package _s
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+	<article id="main" <?php post_class( 'row' ); ?>>
+     	<div class="columns large-12">
+     	
+		<?php if ( have_posts() ) : ?>
+		
+			<?php while ( have_posts() ) : the_post(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+     		     <header class="page-header">
+        		          <h1 class="page-title"><?php the_title(); ?></h1>
+        		          
+        		          <?php if ( 'post' == get_post_type() ) : ?>
+        		          <div class="entry-meta">
+        		          	<?php lab_posted_on(); ?>
+        		          </div><!-- .entry-meta -->
+        		          <?php endif; ?>        		          
+        		     </header><!-- .entry-header -->
+        		     
+        		     <div class="page-meta">        		     
+        		          <?php breadcrumb_trail( array( 'separator' => '>', 'before' => '' ) ); ?>
+        		     </div>
+        		     
+        		     <div class="row content-area">
+        		          <div id="primary" class="large-8 columns">
+        		          	<div id="content">
+        		          	    
+             		          	<?php get_template_part( 'content', 'single' ); ?>
+        		          	    
+        		          	</div><!--#content-->
+             		     </div>
+             		     
+             		     <?php get_sidebar(); ?>
+             		     
+        		     </div>
+        		     
+			<?php endwhile; ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php get_template_part( 'content', 'single' ); ?>
-
-			<?php _s_content_nav( 'nav-below' ); ?>
-
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() )
-					comments_template();
-			?>
-
-		<?php endwhile; // end of the loop. ?>
+		<?php endif; ?>
 
 		</div><!-- #content -->
-	</div><!-- #primary -->
+	</article><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
