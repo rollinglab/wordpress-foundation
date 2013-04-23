@@ -61,6 +61,9 @@
 	display: block;
 	margin: 0 auto;
 }
+.clearfix {
+     @include clearfix();
+}
 
 /* Text meant only for screen readers */
 .screen-reader-text {
@@ -96,6 +99,11 @@
 body {
      line-height: 1.5;
 }
+ul, ol, dl {
+     font-size: 1em;
+     list-style: none;
+     margin: 0;
+}
 #page {
      overflow: hidden;
 }
@@ -110,98 +118,100 @@ body {
 }
 
 
-/* =Menu
------------------------------------------------ */
-
-.navigation-main ul {
-     float: right;
-	list-style: none;
-	margin: 0;
-	padding-left: 0;
-}
-.navigation-main li {
-	float: left;
-	position: relative;
-}
-.navigation-main a {
-     border-bottom: 2px solid transparent;
-     color: $darker-grey;
-	display: block;
-	font-size: 0.9em;
-	margin: 0 1.2em;
-	padding: 0.8em 0;
-	text-decoration: none;
-	&:hover {
-
-	}
-}
-.navigation-main ul ul {
-     background: #fff;
-     border: 1px solid $border-color;
-     @include radius( 0 0 2px 2px );
-	display: none;
-	float: left;
-	position: absolute;
-	     top: 41px;
-		left: 0;
-	z-index: 99999;
-}
-.navigation-main ul ul ul {
-	left: 100%;
-	top: 0;
-}
-.navigation-main ul ul a {
-	width: 200px;
-}
-.navigation-main ul ul li {
-}
-.navigation-main li:hover > a {
-     border-color: $black;
-}
-.navigation-main ul ul :hover > a {
-}
-.navigation-main ul ul a:hover {
-}
-.navigation-main ul li:hover > ul {
-	display: block;
-}
-.navigation-main li.current_page_item a,
-.navigation-main li.current-menu-item a {
-}
-
-/* Small menu */
-.menu-toggle {
-	display: none;
-	cursor: pointer;
-}
-
-.main-small-navigation ul {
-	display: none;
-}
-
-@media screen and (max-width: 600px) {
-	.menu-toggle,
-	.main-small-navigation ul.nav-menu.toggled-on {
-		display: block;
-	}
-
-	.navigation-main ul {
-		display: none;
-	}
-}
-
-/* Breadcrumbs */
-.breadcrumb-trail {
-     font-size: 12px;
-     margin: 1em 0;
-     & .sep {
-          padding: 0 .5em;
+     /* =Menu
+     ----------------------------------------------- */
+     
+     .navigation-main ul {
+          float: right;
+     	list-style: none;
+     	margin: 0;
+     	padding-left: 0;
      }
-}
-.breadcrumb-trail,
-.breadcrumb-trail a {
-     color: $light-grey;
-}
+     .navigation-main li {
+     	float: left;
+     	position: relative;
+     }
+     .navigation-main a {
+          border-bottom: 2px solid transparent;
+          color: $darker-grey;
+     	display: block;
+     	font-size: 0.9em;
+     	margin: 0 1.2em;
+     	padding: 0.8em 0;
+     	text-decoration: none;
+     	&:hover {
+     
+     	}
+     }
+     .navigation-main ul ul {
+          background: #fff;
+          border: 1px solid $border-color;
+          @include radius( 0 0 2px 2px );
+     	display: none;
+     	float: left;
+     	position: absolute;
+     	     top: 43px;
+     		left: 0;
+     	z-index: 99999;
+     }
+     .navigation-main ul ul ul {
+     	left: 100%;
+     	top: 0;
+     }
+     .navigation-main ul ul a {
+     	width: 200px;
+     }
+     .navigation-main ul ul li {
+     }
+     .navigation-main li:hover > a {
+          border-color: $black;     
+     }
+     .navigation-main ul ul :hover > a {
+          border-color: transparent;
+     }
+     .navigation-main ul ul a:hover {
+     }
+     .navigation-main ul li:hover > ul {
+     	display: block;
+     }
+     .navigation-main li.current_page_item a,
+     .navigation-main li.current-menu-item a {
+     }
+     
+     /* Small menu */
+     .menu-toggle {
+     	display: none;
+     	cursor: pointer;
+     }
+     
+     .main-small-navigation ul {
+     	display: none;
+     }
+     
+     @media screen and (max-width: 600px) {
+     	.menu-toggle,
+     	.main-small-navigation ul.nav-menu.toggled-on {
+     		display: block;
+     	}
+     
+     	.navigation-main ul {
+     		display: none;
+     	}
+     }
+     
+     /* Breadcrumbs */
+     .breadcrumb-trail {
+          font-size: 13px;
+          font-weight: 300;
+          margin: 1em 0;
+          & .sep {
+               padding: 0 .5em;
+          }
+     }
+     .breadcrumb-trail,
+     .breadcrumb-trail a {
+          color: $darker-grey;
+     }
 
 
 /* =Main
@@ -267,8 +277,16 @@ body {
 
 .widget {
      color: $darker-grey;
-     font-weight: 300;
      margin-bottom: 2em;
+     & p,
+     & ul,
+     & li,
+     & tr,
+     & td,
+     & a {
+          font-size: 13px;
+          font-weight: 300;          
+     }
      ul {
           border: 1px solid $border-color;
           @include radius( 2px );
@@ -276,12 +294,12 @@ body {
      }
      li {
           border-bottom: 1px solid $border-color;
+          padding: 0.6em 1.2em;
           a {
                display: block;
-               padding: 0.6em 1.2em;               
           }
           &:hover {
-               background: $lighter-grey;
+               background: $background-hover;
           }
           &:last-child {
                border: none;
@@ -298,8 +316,15 @@ body {
      caption {
           border: 1px solid $border-color;
           @include radius( 2px 2px 0 0 );
+          font-size: 13px;
           border-bottom: none;
           padding: 0.6em 0;
+     }
+     tbody tr {
+          height: 35px;
+     }
+     tbody tr > td {
+          border: 1px solid $border-color;
      }
      tfoot {
           border-top: 1px solid $border-color;
@@ -390,6 +415,60 @@ object {
 .comment-list {
      list-style: none;
 }
+.comment-author {
+     img {
+          float: left;
+     }
+}
 .comment-content a {
 	word-wrap: break-word;
 }
+#comments {
+     .commentlist {
+          margin: 0;
+     }
+     .comment {
+          margin-bottom: 2em;
+          position: relative;
+     }
+     .children {
+          clear: both;
+          margin: 2em 0 0 2em;
+     }
+     .comment-author {
+          margin-bottom: 1em;
+     }
+     .fn {
+          display: block;
+          font-size: 17px;
+     }
+     .edit-link {
+          display: block;
+          text-decoration: underline;
+     }     
+     .avatar {
+          border: 2px solid #fff;
+          border-radius: 64px;
+          box-shadow: 0 0 4px #ccc;
+          display: block;
+          margin: 0 2em 1em 0;
+     }
+     .reply {
+          display: none;
+     }
+     #respond {
+          @include grid-row( $behavior: nest );
+          #reply-title {
+               @include grid-column( 3 );
+               margin-top: 0;
+          }    
+          form {
+               @include grid-column( $offset : 1 );          
+               @include grid-column( 8 );
+          }
+     }
+     .form-allowed-tags {
+          display: none;
+     }
+}
+

@@ -157,7 +157,7 @@ add_action( 'widgets_init', 'lab_widgets_init' );
 /**
  * Enqueue scripts and styles
  */
-function _s_scripts() {
+function lab_scripts() {
 	wp_enqueue_style( 'lab-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'lab-normalize', get_template_directory_uri() . '/stylesheets/normalize.css' );
 	wp_enqueue_style( 'lab-app', get_template_directory_uri() . '/stylesheets/app.css' );
@@ -174,7 +174,7 @@ function _s_scripts() {
 		wp_enqueue_script( 'lab-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
+add_action( 'wp_enqueue_scripts', 'lab_scripts' );
 
 /**
  * Implement the Custom Header feature

@@ -61,50 +61,47 @@ if ( ! function_exists( 'lab_comment' ) ) :
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function lab_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case 'pingback' :
-		case 'trackback' :
-	?>
-	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'lab' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'lab' ), '<span class="edit-link">', '<span>' ); ?></p>
-	<?php
-			break;
-		default :
-	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<footer>
-				<div class="comment-author vcard">
-					<?php echo get_avatar( $comment, 40 ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'lab' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-				</div><!-- .comment-author .vcard -->
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 'lab' ); ?></em>
-					<br />
-				<?php endif; ?>
+function lab_comment( $comment ) { ?>
 
-				<div class="comment-meta commentmetadata">
-					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time datetime="<?php comment_time( 'c' ); ?>">
-					<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'lab' ), get_comment_date(), get_comment_time() ); ?>
-					</time></a>
-					<?php edit_comment_link( __( 'Edit', 'lab' ), '<span class="edit-link">', '<span>' ); ?>
-				</div><!-- .comment-meta .commentmetadata -->
-			</footer>
+	<li <?php comment_class( 'row' ); ?> id="li-comment-<?php comment_ID(); ?>">
+		<article id="comment-<?php comment_ID(); ?>" class="comment clearfix">
+     		<div class="columns small-4">
+     		<?php 
+				
+     			$avatar_size = 68;
+          		if ( '0' != $comment->comment_parent )
+          			$avatar_size = 39;
+											
+          		echo get_avatar( $comment, $avatar_size ); ?>		
+          		
+          		<footer class="comment-meta">
+          		     <div class="comment-author vcard">
+          		     	<?php
+          		
+          		     		/* translators: 1: comment author, 2: date and time */
+          		     		printf( __( '%1$s %2$s', 'lab' ),
+          		     			sprintf( '<span class="fn">%s</span>', get_comment_author() ),
+          		     			sprintf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+          		     				esc_url( get_comment_link( $comment->comment_ID ) ),
+          		     				get_comment_time( 'c' ),
+          		     				/* translators: 1: date, 2: time */
+          		     				sprintf( __( '%1$s at %2$s', 'lab' ), get_comment_date(), get_comment_time() )
+          		     			)
+          		     		);
+          		     	?>
+          		
+          		     	<?php edit_comment_link( __( 'Edit', 'lab' ), '<span class="edit-link">', '</span>' ); ?>
+          		     </div><!-- .comment-author .vcard -->          		
+          		</footer>          		
+     		</div>
 
-			<div class="comment-content"><?php comment_text(); ?></div>
-
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
-		</article><!-- #comment-## -->
-
-	<?php
-			break;
-	endswitch;
+			<div class="comment-content columns small-7 small-offset-1">
+     			<?php comment_text(); ?>
+               </div>
+		</article><!-- #comment-## --><?php
 }
-endif; // ends check for lab_comment()
+
+endif;
 
 if ( ! function_exists( 'lab_posted_on' ) ) :
 /**

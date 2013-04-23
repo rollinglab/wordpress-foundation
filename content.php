@@ -25,7 +25,7 @@
 			<?php
 				/* translators: used between list items, there is a space after the comma */
 				$categories_list = get_the_category_list( __( ', ', 'lab' ) );
-				if ( $categories_list && lab_categorized_blog() ) :
+				if ( $categories_list || lab_categorized_blog() ) :
 			?>
 			<span class="cat-links">
 				<?php printf( __( 'Posted in %1$s', 'lab' ), $categories_list ); ?>

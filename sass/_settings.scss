@@ -11,15 +11,16 @@
 // WordPress Theme Global Variables
 //
 
-$black        : #222222;
-$darker-grey  : #424242;
-$dark-grey    : #828282;
-$grey         : #a2a2a2;
-$light-grey   : #c2c2c2;
-$lighter-grey : #efefef;
-$white        : #ffffff;
+$black            : #222222;
+$darker-grey      : #424242;
+$dark-grey        : #828282;
+$grey             : #a2a2a2;
+$light-grey       : #c2c2c2;
+$lighter-grey     : #efefef;
+$white            : #ffffff;
 
-$border-color : $lighter-grey;
+$background-hover : $lighter-grey;
+$border-color     : $lighter-grey;
 
 //
 // Foundation Global Variables
@@ -131,7 +132,7 @@ $h6-font-size: 1em;
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
 $paragraph-font-size: 0.9em;
-// $paragraph-line-height: 1.6;
+$paragraph-line-height: 1.7;
 // $paragraph-margin-bottom: emCalc(20px);
 // $paragraph-aside-font-size: emCalc(14px);
 // $paragraph-aside-line-height: 1.35;
@@ -923,7 +924,7 @@ $table-border-color: $border-color;
 // These control the table head styles
 $table-head-bg: #ffffff;
 // $table-head-font-size: emCalc(14px);
-$table-head-font-color: $darker-grey;
+// $table-head-font-color: $darker-grey;
 // $table-head-font-weight: bold;
 // $table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px);
 
