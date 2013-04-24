@@ -13,8 +13,8 @@
 @import "foundation/components/visibility";
 @import "foundation/components/block-grid";
 @import "foundation/components/type";
-@import "foundation/components/buttons";
-@import "foundation/components/forms"; // *requires components/buttons
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms"; // *requires components/buttons
 // @import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
 // @import "foundation/components/button-groups"; // *requires components/buttons
 // @import "foundation/components/dropdown-buttons"; // *requires components/buttons
@@ -135,13 +135,10 @@ ul, ol, dl {
           border-bottom: 2px solid transparent;
           color: $darker-grey;
      	display: block;
-     	font-size: 0.9em;
+     	font-size: 0.8em;
      	margin: 0 1.2em;
      	padding: 0.8em 0;
      	text-decoration: none;
-     	&:hover {
-     
-     	}
      }
      .navigation-main ul ul {
           background: #fff;
@@ -216,7 +213,12 @@ ul, ol, dl {
 
 /* =Main
 ----------------------------------------------- */
-
+.archive,
+.blog {
+     article {
+          margin-bottom: 2em;
+     }
+}
 .page-header,
 .page-meta {
      border-bottom: 1px solid $border-color;     
@@ -246,9 +248,16 @@ ul, ol, dl {
      }
 }
 .entry-meta {
+     color: $darker-grey;
      font-size: 0.8em;
+     a {
+          color: $dark-grey;          
+     }
 }
 .entry-header .entry-meta {
+     margin-bottom: 2em;
+}
+.entry-content .row {
      margin-bottom: 2em;
 }
 
