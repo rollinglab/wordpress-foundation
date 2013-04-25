@@ -203,7 +203,7 @@ $microformat-abbr-padding: 0;
 // We use these to style the labels in different ways
 // $label-pointer: pointer;
 // $label-font-size: emCalc(14px);
-// $label-font-weight: 500;
+$label-font-weight: 300;
 // $label-font-color: lighten(#000, 30%);
 // $label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
@@ -248,10 +248,10 @@ $microformat-abbr-padding: 0;
 // $input-error-message-font-color-alt: #333;
 
 // We use these to build padding for buttons.
-// $button-med: emCalc(12px);
-// $button-tny: emCalc(7px);
-// $button-sml: emCalc(9px);
-// $button-lrg: emCalc(16px);
+$button-med: emCalc(13px);
+$button-tny: emCalc(9px);
+$button-sml: emCalc(11px);
+$button-lrg: emCalc(16px);
 
 // We use this to control the display property.
 // $button-display: inline-block;
@@ -261,20 +261,20 @@ $microformat-abbr-padding: 0;
 // $button-font-family: inherit;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
-// $button-font-med: emCalc(16px);
-// $button-font-tny: emCalc(11px);
-// $button-font-sml: emCalc(13px);
-// $button-font-lrg: emCalc(20px);
+$button-font-med: emCalc(13px);
+$button-font-tny: emCalc(9px);
+$button-font-sml: emCalc(11px);
+$button-font-lrg: emCalc(16px);
 // $button-font-weight: bold;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: 10%;
+$button-function-factor: 10%;
 
 // We use these to control button border styles.
-// $button-border-width: 1px;
-// $button-border-style: solid;
-// $button-border-color: darken($primary-color, $button-function-factor);
+$button-border-width: 0;
+$button-border-style: solid;
+$button-border-color: darken($primary-color, $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
@@ -914,7 +914,7 @@ $microformat-abbr-padding: 0;
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
-$table-even-row-bg: #fff;
+// $table-even-row-bg: #fff;
 
 // These control the table cell border style
 // $table-border-style: solid;
@@ -922,7 +922,7 @@ $table-even-row-bg: #fff;
 $table-border-color: $border-color;
 
 // These control the table head styles
-$table-head-bg: #ffffff;
+// $table-head-bg: #ffffff;
 // $table-head-font-size: emCalc(14px);
 // $table-head-font-color: $darker-grey;
 // $table-head-font-weight: bold;
