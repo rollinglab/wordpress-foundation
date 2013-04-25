@@ -15,11 +15,14 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site"> 
+
+<?php $lab_options = get_option( 'lab_options' ); ?>
+
      <header id="masthead" class="site-header" role="banner">
           <div class="row">
                <div id="logo" class="large-4 columns">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?>
-                         <img src="">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                         <img src="<?php echo $lab_options['logo_image']; ?>" style="max-height:20px;margin-top:10px;">
      			</a>
      		</div><!--#logo-->
      
