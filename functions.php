@@ -159,8 +159,14 @@ add_action( 'widgets_init', 'lab_widgets_init' );
 function lab_scripts() {
 	wp_enqueue_style( 'lab-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'lab-normalize', get_template_directory_uri() . '/stylesheets/normalize.css' );
+	wp_enqueue_style( 'lab-flexslider', get_template_directory_uri() . '/stylesheets/flexslider.css' );
 	wp_enqueue_style( 'lab-app', get_template_directory_uri() . '/stylesheets/app.css' );
 
+	wp_enqueue_script( 'lab-modernizr', get_template_directory_uri() . '/js/custom.modernizr.js', array(), '20120206', true );
+	wp_enqueue_script( 'lab-flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '20120206', true );
+	wp_enqueue_script( 'lab-foundation', get_template_directory_uri() . '/js/foundation.min.js', array(), '20120206', true );
+	wp_enqueue_script( 'lab-app', get_template_directory_uri() . '/js/app.js', array(), '20120206', true );
+	
 	wp_enqueue_script( 'lab-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'lab-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );

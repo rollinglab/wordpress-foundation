@@ -289,6 +289,112 @@ add_shortcode( 'td', 'lab_td' );
 
 
 /*
+ * Sections!
+ *
+ */
+ 
+/*
+ * Section Container
+ */
+function lab_section_container( $atts, $content = '' ) {
+     extract( shortcode_atts( array(
+          'type' => 'auto'
+     ), $atts ) );
+     
+     $type = ( !empty( $type ) ? ' ' . $type : '' );
+     
+     
+     // build class string from input values
+     $class = 'section-container' . $type; 
+     
+     return '<div class="' . $class . '" data-section="' . $type . '">' . lab_clean_shortcode( $content, '<br />, <p></p>' ) . '</div>';
+}
+add_shortcode( 'section-container', 'lab_section_container' );
+ 
+/*
+ * Section Panel
+ */
+function lab_section( $atts, $content = '' ) {
+     extract( shortcode_atts( array(
+          'title' => ''
+     ), $atts ) );
+     
+     $title = ( !empty( $title ) ? $title : '' );
+          
+     return '<section>' .
+                 '<p class="title" data-section-title><a href="#">' . $title . '</a></p>' .
+                 '<div class="content" data-section-content>'.
+                      '<p>' . $content . '</p>' .
+                 '</div>' .
+            '</section>';
+}
+add_shortcode( 'section', 'lab_section' );
+
+
+
+
+/*
+ * Sliders!
+ *
+ */
+ 
+/*
+ * Flexslider Container
+ */
+function lab_flexslider( $atts, $content = '' ) {
+     extract( shortcode_atts( array(
+          'type' => ''
+     ), $atts ) );
+     
+     $type = ( !empty( $type ) ? ' ' . $type : '' );
+     
+     // build class string from input values     
+     $class = 'flexslider' . $type; 
+     
+     return '<div class="' . $class . '"><ul class="slides">' . lab_clean_shortcode( $content, '<p></p>'  ) . '</ul></div>';
+}
+add_shortcode( 'flexslider', 'lab_flexslider' );
+
+/*
+ * Flexslider Slide
+ */
+function lab_slide( $atts, $content = '' ) {
+     extract( shortcode_atts( array(
+          'img'  => '',
+          'href' => ''
+     ), $atts ) );
+
+     $img_src = ( !empty( $img ) ? $img : '' );
+     $href    = ( !empty( $href ) ? $href : '' );
+     
+     return '<li><a href="' . $href .'"><img src="' . $img_src . '"></a></li>';
+}
+add_shortcode( 'slide', 'lab_slide' );
+
+
+ 
+/*
+ * Tooltips!
+ *
+ */
+ 
+function lab_tooltip( $atts, $content = '' ) {
+     extract( shortcode_atts( array(
+          'type' => ''
+     ), $atts ) );
+     
+     $type = ( !empty( $type ) ? ' ' . $type : '' );
+     
+     
+     // build class string from input values
+     $class = 'section-container' . $type; 
+     
+     return '<div class="' . $class . '" data-section="' . $type . '">' . lab_clean_shortcode( $content, '<br />, <p></p>' ) . '</div>';
+}
+add_shortcode( 'tooltip', 'lab_tooltip' );
+
+
+/*
  * Typography!
  *
  */
